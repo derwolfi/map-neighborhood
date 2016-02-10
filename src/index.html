@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Neighborhood Map - Udacity - Wolfgang Reiter
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="bower_components/underscore/underscore-min.js"></script>
+
+		<!-- build:css css/app.css -->
+		<!-- Bootstrap Core CSS -->
+		<link rel="stylesheet" href="css/app.css">
+		<!-- endbuild -->
+	</head>
+	<body>
+
+		<div class="navigation open">
+			<div id="handle"></div>
+			<ul id="cities" data-bind="foreach: cityList">
+				<li data-bind="click: $parent.setCurrentCity,text: city, css: {'active': active}"></li>
+			</ul>
+			<form>
+				<input id="search" type="search" name="search" placeholder="Filter the Location" data-bind="value: filter, valueUpdate: 'afterkeydown'" autocomplete="off" /><img class="filter" src="images/filter_icon.png" alt="Filter">
+			</form>
+			<ul id="locations" data-bind="foreach: filtereditems">
+				<li data-bind="text: name, click: $parent.listInfoWindow.bind($data,latitude + longitude)"></li>
+			</ul>
+			<div id="listDetails">
+
+			</div>
+		</div>
+		<div id="map"></div>
+
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8t0hbWYnjtgDDXNdfgidOGPmU5In0ikk"
+		></script>
+		<script type="text/javascript" src="bower_components/knockout/dist/knockout.js"></script>
+		<!-- build:js js/app.min.js -->
+		<script src="js/app.js"></script>
+		<!-- endbuild -->
+	</body>
+</html>
