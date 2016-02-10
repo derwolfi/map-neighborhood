@@ -1,27 +1,29 @@
-# reiter-osteopathie.de
+# Map Neiborhood
 
-## Gulp Tasks
+## Setup for the Project
 
-run a webserver : gulp webserver = http://localhost:8000/
-after changing a css, js File the page will reloaded.
+use the following steps to init the project.
+if not npm is installed, install it.
 
-```
-$ livereload help
+  ```
+  git clone https://github.com/derwolfi/map-neigborhood
 
-  Usage: livereload [options]
+  cd map-neigborhood
 
-  Options:
+  npm install
 
-    -h, --help        output usage information
-    -V, --version     output the version number
-    -n, --no-browser  do not open the localhost server in a browser
-    -l, --log [type]  log level (default: info)
-    -p, --port <n>    the port to run on
-```
-more Info under: https://github.com/hiddentao/gulp-server-livereload
+  gulp build
+
+  ```
+
+run a webserver in developer mode: ```node app.js```
+The Sourcen are in src/ Folder
+
+run a webserver in production mode : ```NODE_ENV=production node app.js```
+The Sourcen are in webapp/ Folder
 
 
-build the site  : gulp build
+build the site  : ```gulp build```
 It will minify and concat css, js and minify html
 webapp is the destination Folder
 

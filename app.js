@@ -1,5 +1,7 @@
 var express = require('express'),
-	yelp = require("node-yelp");
+	yelp = require("node-yelp"),
+	app = express();
+
 
 // Yelp Token/Secrets
 var client = yelp.createClient({
@@ -16,11 +18,29 @@ var client = yelp.createClient({
   }
 });
 
+var env = process.env.NODE_ENV || 'development';
+if ('development' === env) {
+   app.use(express.static('src'));
+   app.use(function (err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
+} else {
+	console.log('prod');
+	app.use(express.static('webapp'));
+	app.use(function (err, req, res, next) {
+	    res.status(err.status || 500);
+	    res.render('error', {
+	        message: err.message,
+	        error: {}
+	    });
+	});
+}
 
-var app = express();
 
-// Sourcen from the Webapp.
-app.use(express.static('webapp'));
 
 // Server Request for yelp
 app.get('/api/:location/:term/', function(req,res) {
