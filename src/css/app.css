@@ -7,7 +7,7 @@ html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
 #map .yelp_img { float: left; margin-right: 15px; }
 .navigation { background-color: #63632d; padding: 5px;  position: absolute; z-index: 3; top: 60px; bottom: 0; width: 250px; left: -260px; }
 .navigation.open { left: 0; }
-.navigation #handle { width: 20px; height: 30px; position: absolute; right: -20px; background-color: #63632d; }
+.navigation #handle { width: 20px; height: 30px; position: absolute; right: -20px; background-color: #63632d; cursor: pointer; }
 .navigation #handle:before { content: ''; display: block; height: 0; width: 0; border-bottom: 5px solid transparent; border-top: 5px solid transparent; border-right: 5px solid #fff; position: absolute; top: 10px; }
 .navigation.open #handle:before { border-right: 5px solid #fff; border-left: 5px solid transparent; }
 .navigation:not(.open) #handle:before { border-left: 5px solid #fff; border-right: 5px solid transparent; left: 7px; }
