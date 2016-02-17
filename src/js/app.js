@@ -212,6 +212,8 @@ jQuery( document ).ready(function( $ ) {
 					}
 				}
 
+				self.map.setCenter(marker.getPosition());
+
 			};
 
 

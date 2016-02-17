@@ -30,11 +30,11 @@
 				<input id="filter" type="search" name="search" placeholder="Filter the Location" data-bind="value: filter, valueUpdate: 'input'" autocomplete="off" /><img class="filter" src="images/filter_icon.png" alt="Filter">
 			</form>
 			<h2>Neiborhoods List</h2>
-			<ul id="locations" data-bind="foreach: filtereditems">
-				<li data-bind="text: name, click: $parent.listInfoWindow.bind($data,latitude + longitude)"></li>
-			</ul>
-			<div id="listDetails">
+			<div class="location">
 
+				<ul id="locations" data-bind="foreach: filtereditems">
+					<li data-bind="text: name, click: $parent.listInfoWindow.bind($data,latitude + longitude)"></li>
+				</ul>
 			</div>
 		</div>
 		<div id="map"></div>
