@@ -5,8 +5,10 @@ jQuery( document ).ready(function( $ ) {
 	'use strict';
 	var data;
 
+	// Data connection to server
 	var jqxhr = $.getJSON( '/data/', function( data ) {
 
+		// Construktor for a City use: new City(##item##);
 		var City = function(data, isActive) {
 			this.city = ko.observable(data.city);
 			this.longitude = ko.observable(data.longitude);
@@ -15,12 +17,11 @@ jQuery( document ).ready(function( $ ) {
 			this.active = ko.observable(isActive);
 		};
 
-		var Location = function(data) {
-			this.name = ko.observable(data.name);
-			this.latitude = ko.observable(data.latitude);
-			this.locations = ko.observable(data.locations);
-		};
-
+		/* Shows locations in a City on a google Maps.
+		 * The Locations can filterd direktly show on the Map.
+		 * Select a city of your choice to see there lokation.
+		 * Second Informations a comes from yelp.com
+		 */
 		var ViewModel = function() {
 			var self = this;
 
@@ -119,6 +120,7 @@ jQuery( document ).ready(function( $ ) {
 				}
 			});
 
+			// The google map
 			self.map = null;
 
 			// Create a map object and specify the DOM element for display.
@@ -180,21 +182,27 @@ jQuery( document ).ready(function( $ ) {
 
 					$.getJSON( query , function( data ) {
 						var text, rating, phone, yelpUrl, img;
-						img = '<img class="yelp_img" src="' + data.businesses[0].image_url + '" alt="">';
+						if(data.businesses[0]) {
 
-						rating = 'Rating: <img class="rating" src="' + data.businesses[0].rating_img_url + '" alt="Rating" /> ' +
-					    			data.businesses[0].review_count + ' recommended posts<br/><br/>';
+							img = '<img class="yelp_img" src="' + data.businesses[0].image_url + '" alt="">';
 
-					    if(data.businesses[0].snippet_text) {
-					   		text = '<p>' + data.businesses[0].snippet_text + '</p>';
-					    }
+							rating = 'Rating: <img class="rating" src="' + data.businesses[0].rating_img_url + '" alt="Rating" /> ' +
+						    			data.businesses[0].review_count + ' recommended posts<br/><br/>';
 
-					    phone = '<p>phone: ' + data.businesses[0].phone + '</p>';
+						    if(data.businesses[0].snippet_text) {
+						   		text = '<p>' + data.businesses[0].snippet_text + '</p>';
+						    }
 
-					    yelpUrl = '<p><a href="' + data.businesses[0].mobile_url + '">Yelp Url</a></p>';
+						    phone = '<p>phone: ' + data.businesses[0].phone + '</p>';
 
+						    yelpUrl = '<p><a href="' + data.businesses[0].mobile_url + '">Yelp Url</a></p>';
+						    detail.empty().append(img, rating,text,phone,yelpUrl);
 
-					    detail.empty().append(img, rating,text,phone,yelpUrl);
+						} else {
+							text = '<p>No Detail Informations on yelp.com available.</p>';
+							detail.empty().append(text);
+						}
+
 					}).error(function(e) {
 						detail.text('Detail Informations are not available!');
 					});
@@ -226,7 +234,7 @@ jQuery( document ).ready(function( $ ) {
 							id: item.latitude + item.longitude,
 							icon: {
 								url: item.pin,
-								scaledSize: new google.maps.Size(30, 35)
+								scaledSize: new google.maps.Size(20, 20)
 							}
 						});
 						// A InfoWindow for a Location.
@@ -271,7 +279,6 @@ jQuery( document ).ready(function( $ ) {
 			nav.addClass('open');
 		}
 	});
-
 
 });
 

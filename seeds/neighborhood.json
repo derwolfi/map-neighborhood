@@ -8,35 +8,30 @@
 				"name": "emilo KAFFEE",
 				"latitude": 48.1336954,
 				"longitude": 11.5766188,
-				"img": "//geo1.ggpht.com/cbk?panoid=UlvAMDNw3aGNh1GmVFfDyw&output=thumbnail&cb_client=search.TACTILE.gps&thumb=2&w=408&h=256&yaw=60.575191&pitch=0",
 				"pin": "images/coffee_pin.png"
 			},
 			{
 				"name": "Cafe Cord",
 				"latitude": 48.1303302,
 				"longitude": 11.5667481,
-				"img": "//lh3.googleusercontent.com/-fXkUaIjpRNY/VElJXP2MUNI/AAAAAAAAAC8/f1neQt35MWY/s408-k-no/",
 				"pin": "images/coffee_pin.png"
 			},
 			{
 				"name": "Bar Centrale",
 				"latitude": 48.1322238,
 				"longitude": 11.5745196,
-				"img": "//lh6.googleusercontent.com/-e2fNszxQgo0/Ve6gxsxNFHI/AAAAAAAAAGw/3jTM2s7KGpg/s408-k-no/",
 				"pin": "images/coffee_pin.png"
 			},
 			{
 				"name": "Caffé Fausto",
 				"latitude": 48.1097829,
 				"longitude": 11.5707436,
-				"img": "//lh6.googleusercontent.com/-RpwSkEU-Q3Y/VME4Hxl1bTI/AAAAAAAAAAU/2KxaIMxUdJA/s408-k-no/",
 				"pin": "images/coffee_pin.png"
 			},
 			{
 				"name": "Henry hat Hunger",
 				"latitude": 48.1266786,
 				"longitude": 11.5802105,
-				"img": "//lh4.googleusercontent.com/-mCpJ4MzPy5E/VNgQBEKHNuI/AAAAAAAAAAU/XF0DiEEXOeE/s408-k-no/",
 				"pin": "images/coffee_pin.png"
 			}
 		]
@@ -50,35 +45,30 @@
 				"name": "Café Hilde",
 				"latitude": 52.5325279,
 				"longitude": 13.4134222,
-				"img": "//lh4.googleusercontent.com/proxy/LwxhJr0lYDsI-wCzjWGcLkLhffFyLC5lTUdDKYRJyUvl1Igy_68i8ufMc0t_dmJea2VGLD6fQp2E7BrATG18MoEHrNOhPzA8joZxQBqjAiTFQ-X03dHl4zTE7sTToNRKzULS_xkd-kOPEip4Va5Pee43lQ=w455-h256",
 				"pin": "images/coffee_pin.png"
 			},
 			{
 				"name": "Café Anna Blume",
 				"latitude": 52.5363523,
 				"longitude": 13.4138299,
-				"img": "//lh3.googleusercontent.com/-M8F3PJu3naE/VlcH7_PX_1I/AAAAAAAACYs/hiJytsetkP0/s455-k-no/",
 				"pin": "images/coffee_pin.png"
 			},
 			{
 				"name": "Lass uns Freunde bleiben",
 				"latitude": 52.5338724,
 				"longitude": 13.4077145,
-				"img": "//lh5.googleusercontent.com/-oB92WKm9XPc/VmljuNcVQgI/AAAAAAABpw0/FacoVaFDOrY/s408-k-no/",
 				"pin": "images/coffee_pin.png"
 			},
 			{
 				"name": "Kulturkantine Mitte-Prenzlauer Berg",
 				"latitude": 52.5325279,
 				"longitude": 13.4107615,
-				"img": "//lh3.googleusercontent.com/-dVND6MyAGLw/VNvVt9mathI/AAAAAAAAAA0/x57cw6TCFK0/s408-k-no/",
 				"pin": "images/coffee_pin.png"
 			},
 			{
 				"name": "Cafe Knorke Bar",
 				"latitude": 52.532554,
 				"longitude": 13.4206964,
-				"img": "//lh5.googleusercontent.com/-phoc9jC1mT0/VNGSDh6-kpI/AAAAAAAAAAk/o8wXhlwbQzc/s408-k-no/",
 				"pin": "images/coffee_pin.png"
 			}
 		]
