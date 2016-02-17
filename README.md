@@ -18,21 +18,24 @@ if not npm is installed, install it.
 This Project use mongodb
 if it isn't installed: https://www.mongodb.org/
 
+Start the mongodb.
+
 To insert the Data into the mongodb:
 
 ```
-node seed.js to insert Data into the mongodb
+node seed.js
 ```
+## Build for Production ENV
 
 build the site  : ```gulp build```
 It will minify and concat css, js and minify html
 webapp is the destination Folder
 
 ## Webserver
-run a webserver in developer mode: ```node server.js```
+In developer mode: ```node server.js```
 The Sourcen are in src/ Folder
 
-run a webserver in production mode : ```NODE_ENV=production node app.js```
+In production mode : ```NODE_ENV=production node app.js```
 The Sourcen are in webapp/ Folder
 
 
