@@ -35,7 +35,7 @@ webapp is the destination Folder
 In developer mode: ```node server.js```
 The Sourcen are in src/ Folder
 
-In production mode : ```NODE_ENV=production node app.js```
+In production mode : ```NODE_ENV=production node server.js```
 The Sourcen are in webapp/ Folder
 
 
