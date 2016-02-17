@@ -17,12 +17,19 @@
 
 		<div class="navigation open">
 			<div id="handle"></div>
+			<h2><label for="search">Choose your City with Neighborhoods</label></h2>
+			<form data-bind="submit: onEnter">
+				<input type="text" placeholder="Search in your city." data-bind="value: query" id="search">
+				<button type="submit">Submit</button>
+			</form><br/>
+			<h2>My City List of Neighborhood</h2>
 			<ul id="cities" data-bind="foreach: cityList">
 				<li data-bind="click: $parent.setCurrentCity,text: city, css: {'active': active}"></li>
 			</ul>
 			<form>
-				<input id="search" type="search" name="search" placeholder="Filter the Location" data-bind="value: filter, valueUpdate: 'afterkeydown'" autocomplete="off" /><img class="filter" src="images/filter_icon.png" alt="Filter">
+				<input id="filter" type="search" name="search" placeholder="Filter the Location" data-bind="value: filter, valueUpdate: 'input'" autocomplete="off" /><img class="filter" src="images/filter_icon.png" alt="Filter">
 			</form>
+			<h2>Neiborhoods List</h2>
 			<ul id="locations" data-bind="foreach: filtereditems">
 				<li data-bind="text: name, click: $parent.listInfoWindow.bind($data,latitude + longitude)"></li>
 			</ul>
@@ -33,7 +40,7 @@
 		<div id="map"></div>
 
 
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8t0hbWYnjtgDDXNdfgidOGPmU5In0ikk"
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8t0hbWYnjtgDDXNdfgidOGPmU5In0ikk&libraries=places"
 		></script>
 		<script type="text/javascript" src="bower_components/knockout/dist/knockout.js"></script>
 		<!-- build:js js/app.min.js -->

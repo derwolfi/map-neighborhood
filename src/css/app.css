@@ -4,15 +4,18 @@ html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
 #map { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
 #map #markerDetails { height: 200px; }
 #map .rating { position: relative; top: 5px;  }
+#map .yelp_img { float: left; margin-right: 15px; }
 .navigation { background-color: #63632d; padding: 5px;  position: absolute; z-index: 3; top: 60px; bottom: 0; width: 250px; left: -260px; }
 .navigation.open { left: 0; }
 .navigation #handle { width: 20px; height: 30px; position: absolute; right: -20px; background-color: #63632d; }
 .navigation #handle:before { content: ''; display: block; height: 0; width: 0; border-bottom: 5px solid transparent; border-top: 5px solid transparent; border-right: 5px solid #fff; position: absolute; top: 10px; }
 .navigation.open #handle:before { border-right: 5px solid #fff; border-left: 5px solid transparent; }
 .navigation:not(.open) #handle:before { border-left: 5px solid #fff; border-right: 5px solid transparent; left: 7px; }
+.navigation h2 { color: #fff; font-size: 16px; border-bottom: 1px solid #fff; padding-bottom: 5px; }
 .navigation ul#cities { margin: 0 0 10px 0; padding: 0; }
 .navigation ul#cities li { display: inline-block; color: #fff; padding: 2px 5px; }
 .navigation ul#cities li.active { background-color: #969643; }
+.navigation input#search { width: 70%; }
 .navigation input { margin-left: 0; width: 90%; }
 .navigation .filter { width: 12px; margin-left: 4px; }
 .navigation ul#locations { margin: 10px 0; padding: 0 2px; }

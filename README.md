@@ -12,20 +12,29 @@ if not npm is installed, install it.
 
   npm install
 
-  gulp build
-
   ```
 
-run a webserver in developer mode: ```node app.js```
+##Database
+This Project use mongodb
+if it isn't installed: https://www.mongodb.org/
+
+To insert the Data into the mongodb:
+
+```
+node seed.js to insert Data into the mongodb
+```
+
+build the site  : ```gulp build```
+It will minify and concat css, js and minify html
+webapp is the destination Folder
+
+## Webserver
+run a webserver in developer mode: ```node server.js```
 The Sourcen are in src/ Folder
 
 run a webserver in production mode : ```NODE_ENV=production node app.js```
 The Sourcen are in webapp/ Folder
 
-
-build the site  : ```gulp build```
-It will minify and concat css, js and minify html
-webapp is the destination Folder
 
 ## Apache Config or .htaccess
 

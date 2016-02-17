@@ -1,7 +1,23 @@
 var express = require('express'),
 	yelp = require("node-yelp"),
-	app = express();
+	mongoose = require('mongoose'),
+	app = express(),
+	data,
+	Neighborhood = require('./model.js');
 
+// Database connection
+mongoose.connect('mongodb://localhost/map_neighborhood');
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+
+	Neighborhood.find(function (err, neighborhood) {
+	  if (err) return console.error(err);
+	  data = neighborhood;
+	});
+
+});
 
 // Yelp Token/Secrets
 var client = yelp.createClient({
@@ -18,6 +34,7 @@ var client = yelp.createClient({
   }
 });
 
+// Development environment
 var env = process.env.NODE_ENV || 'development';
 if ('development' === env) {
    app.use(express.static('src'));
@@ -28,17 +45,17 @@ if ('development' === env) {
             error: err
         });
     });
-} else {
-	console.log('prod');
-	app.use(express.static('webapp'));
-	app.use(function (err, req, res, next) {
-	    res.status(err.status || 500);
-	    res.render('error', {
-	        message: err.message,
-	        error: {}
-	    });
-	});
 }
+
+// Production environment
+app.use(express.static('webapp'));
+app.use(function (err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
+});
 
 
 
@@ -59,6 +76,18 @@ app.get('/api/:location/:term/', function(req,res) {
 	    console.log('unavailableForLocation');
 	  }
 	});
+});
+
+// Get the Data from the query
+app.get('/data', function(req,res) {
+	res.json(data);
+});
+
+/// catch 404 and forwarding to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 
