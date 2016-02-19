@@ -21,6 +21,7 @@ function initMap() {
 
 			// Constructor for a Location.
 			var Location = function(data) {
+				var test;
 				this.name = data.name;
 				this.latitude = data.latitude;
 				this.longitude = data.longitude;
@@ -37,13 +38,11 @@ function initMap() {
 				});
 				// A InfoWindow for a Location.
 				this.marker.infowindow = new google.maps.InfoWindow({
-					maxWidth: 400,
-					content: '<div id="iwContent"><h2>' + this.name + '</h2>' +
-							'<div id="detail"></div></div>'
+					maxWidth: 400
 				});
+				this.marker.infowindow.setContent(document.getElementById('yelpDetail'));
 
 			};
-
 			Location.prototype.stopAnimation = function() {
 				this.marker.setAnimation(null);
 			};
@@ -69,6 +68,14 @@ function initMap() {
 				// current City filled in with default
 				self.currentCity = ko.observable(self.cityList()[0]);
 
+				// Information for the Infowindow for a marker
+				self.yelp_img = ko.observable();
+				self.yelp_rating = ko.observable();
+				self.yelp_review_count = ko.observable();
+				self.yelp_snippet = ko.observable();
+				self.yelp_phone = ko.observable();
+				self.yelp_url = ko.observable();
+
 				// setCurrentCity
 				self.setCurrentCity = function(city) {
 					// remove active
@@ -79,6 +86,7 @@ function initMap() {
 					self.currentCity(city);
 					self.setCityLocations();
 				};
+
 
 				// Set the location for a City
 				self.setCityLocations = function() {
@@ -96,6 +104,8 @@ function initMap() {
 
 					});
 				};
+
+				self.yelpdetail = ko.observable();
 
 				// query search Field for an City
 				self.query = ko.observable('');
@@ -135,6 +145,8 @@ function initMap() {
 							}
 						);
 
+					}).error(function(e) {
+						detail.text('No Informations are not available!');
 					});
 
 				};
@@ -210,8 +222,7 @@ function initMap() {
 
 				// Open Close logic for the Map Marker
 				self.openCloseMarkerDetails = function(location) {
-					var detail,
-						marker = location.marker;
+					var marker = location.marker;
 
 					// Set a Animation for the Marker.
 					marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -227,34 +238,25 @@ function initMap() {
 							item.infowindow.close();
 						});
 						marker.infowindow.open(map, marker);
-						detail = $('#detail');
 						var query = '/api/'+ self.currentCity().city() + '/' + marker.name;
 
 						$.getJSON( query , function( data ) {
-							var text, rating, phone, yelpUrl, img;
 							if(data.businesses[0]) {
 
-								img = '<img class="yelp_img" src="' + data.businesses[0].image_url + '" alt="">';
+								self.yelp_img(data.businesses[0].image_url);
+								self.yelp_rating(data.businesses[0].rating_img_url);
+								self.yelp_review_count(data.businesses[0].review_count + ' recommended posts');
+								self.yelp_snippet(data.businesses[0].snippet_text);
+								self.yelp_phone(data.businesses[0].phone);
+								self.yelp_url(data.businesses[0].mobile_url);
 
-								rating = 'Rating: <img class="rating" src="' + data.businesses[0].rating_img_url + '" alt="Rating" /> ' +
-							    			data.businesses[0].review_count + ' recommended posts<br/><br/>';
-
-							    if(data.businesses[0].snippet_text) {
-							   		text = '<p>' + data.businesses[0].snippet_text + '</p>';
-							    }
-
-							    phone = '<p>phone: ' + data.businesses[0].phone + '</p>';
-
-							    yelpUrl = '<p><a href="' + data.businesses[0].mobile_url + '">Yelp Url</a></p>';
-							    detail.empty().append(img, rating,text,phone,yelpUrl);
 
 							} else {
-								text = '<p>No Detail Informations on yelp.com available.</p>';
-								detail.empty().append(text);
+								self.yelp_snippet('No Detail Informations on yelp.com available.');
 							}
 
 						}).error(function(e) {
-							detail.text('Detail Informations are not available!');
+							self.yelp_snippet('Detail Informations are not available!');
 						});
 						// If not in Array add it.
 						if(self.allInfoWindows.indexOf(marker) === -1) {
@@ -273,14 +275,24 @@ function initMap() {
 			};
 			if(data) {
 				ko.applyBindings(new ViewModel());
-				// self.mapInit = ko.computed(function() {
-				// 	if(mapinit()) {
-
-				// 	}
-				// });
 			}
 
 		});
+
+		var $window = $(window);
+
+		function chechWidth() {
+			var windowWidth = $window.width(),
+				nav = $('.navigation');
+			if(windowWidth < 690) {
+				nav.addClass('mobile');
+				nav.removeClass('open');
+			} else {
+				nav.removeClass('mobile');
+				nav.addClass('open');
+			}
+		}
+		$window.resize(chechWidth);
 
 		// open/Close the sidebar Navigation
 		$('#handle').on('click', function(e) {
