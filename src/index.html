@@ -16,8 +16,8 @@
 	</head>
 	<body>
 
-		<div class="navigation open">
-			<div id="handle"></div>
+		<div class="navigation" data-bind="css: { 'open': menuOpen, 'small': smallSize }">
+			<div id="handle" data-bind="click: handle"></div>
 			<h2><label for="search">Choose your City with Neighborhoods</label></h2>
 			<form data-bind="submit: onEnter">
 				<input type="text" placeholder="Search in your city." data-bind="value: query" id="search">
@@ -40,11 +40,12 @@
 		</div>
 		<div id="map"></div>
 		<div id="yelpDetail">
+			<h3 data-bind="visible: yelp_name, text: yelp_name"></h3>
 			<img class="yelp_img" data-bind="visible: yelp_img, attr: { src: yelp_img }" alt="" />
 			<p data-bind="visible: yelp_rating">Rating: <img class="rating" data-bind="attr: { src: yelp_rating }" alt="Rating" /><em data-bind="text: "></em></p>
-			<p data-bind="text: yelp_snippet"></p>
+			<p data-bind="visible: yelp_snippet, text: yelp_snippet"></p>
 
-			<p data-bind="text: yelp_phone"></p>
+			<p data-bind="visible: yelp_phone, text: yelp_phone"></p>
 
 			<p data-bind="visible: yelp_url"><a data-bind="attr: { href: yelp_url }">Yelp Url</a></p>
 		</div>

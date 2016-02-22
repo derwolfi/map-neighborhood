@@ -1,4 +1,4 @@
-function initMap() {
+function initApp() {
 	'use strict';
 
 	jQuery( document ).ready(function( $ ) {
@@ -69,12 +69,16 @@ function initMap() {
 				self.currentCity = ko.observable(self.cityList()[0]);
 
 				// Information for the Infowindow for a marker
+				self.yelp_name = ko.observable();
 				self.yelp_img = ko.observable();
 				self.yelp_rating = ko.observable();
 				self.yelp_review_count = ko.observable();
 				self.yelp_snippet = ko.observable();
 				self.yelp_phone = ko.observable();
 				self.yelp_url = ko.observable();
+
+				self.window = $(window);
+				self.windowWidth = ko.observable();
 
 				// setCurrentCity
 				self.setCurrentCity = function(city) {
@@ -112,8 +116,7 @@ function initMap() {
 
 				// Search for a city.
 				self.onEnter = function(d,e) {
-					var query = self.query(),
-						location;
+					var query = self.query();
 					//get Geocode
 					$.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address=' + query, function( data ) {
 						var item = {
@@ -144,6 +147,8 @@ function initMap() {
 								self.setCurrentCity( new City(item) );
 							}
 						);
+
+
 
 					}).error(function(e) {
 						detail.text('No Informations are not available!');
@@ -222,6 +227,9 @@ function initMap() {
 
 				// Open Close logic for the Map Marker
 				self.openCloseMarkerDetails = function(location) {
+					if(self.windowWidth() < 950) {
+						self.menuOpen(false);
+					}
 					var marker = location.marker;
 
 					// Set a Animation for the Marker.
@@ -243,6 +251,7 @@ function initMap() {
 						$.getJSON( query , function( data ) {
 							if(data.businesses[0]) {
 
+								self.yelp_name(data.businesses[0].name);
 								self.yelp_img(data.businesses[0].image_url);
 								self.yelp_rating(data.businesses[0].rating_img_url);
 								self.yelp_review_count(data.businesses[0].review_count + ' recommended posts');
@@ -268,6 +277,27 @@ function initMap() {
 
 				};
 
+				// Menu open/close
+				self.menuOpen = ko.observable(true);
+				self.handle = function(data,event) {
+					self.menuOpen(!self.menuOpen());
+				};
+
+				// window size
+				self.smallSize = ko.observable(false);
+				self.chechWidth = function() {
+					self.windowWidth(self.window.width());
+					if(self.windowWidth() < 690) {
+						self.smallSize(true);
+						self.menuOpen(false);
+					} else {
+						self.smallSize(false);
+						self.menuOpen(true);
+					}
+				};
+				self.window.resize(self.chechWidth);
+				self.chechWidth();
+
 				// set a Initial city
 				self.setCurrentCity(self.currentCity());
 
@@ -279,34 +309,14 @@ function initMap() {
 
 		});
 
-		var $window = $(window);
-
-		function chechWidth() {
-			var windowWidth = $window.width(),
-				nav = $('.navigation');
-			if(windowWidth < 690) {
-				nav.addClass('mobile');
-				nav.removeClass('open');
-			} else {
-				nav.removeClass('mobile');
-				nav.addClass('open');
-			}
-		}
-		$window.resize(chechWidth);
-
-		// open/Close the sidebar Navigation
-		$('#handle').on('click', function(e) {
-			e.preventDefault();
-			var nav = $(this).parent();
-			if(nav.hasClass('open')) {
-				nav.removeClass('open');
-			} else {
-				nav.addClass('open');
-			}
-		});
-
 	});
 
+}
+
+// async callback for the google Map.
+function initMap() {
+	// Init the App
+	initApp();
 }
 
 function googleMapError() {
