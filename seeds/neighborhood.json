@@ -1,75 +1,195 @@
 [
 	{
 		"city": "München",
-		"latitude": 48.122595,
-		"longitude": 11.5760318,
+		"latitude": 48.1351253,
+		"longitude": 11.5819806,
 		"locations": [
 			{
-				"name": "emilo KAFFEE",
-				"latitude": 48.1336954,
-				"longitude": 11.5766188,
-				"pin": "images/coffee_pin.png"
+				"name": "Cafe Luitpold",
+				"latitude": 48.1429306,
+				"longitude": 11.574821199999974,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
 			},
 			{
-				"name": "Cafe Cord",
-				"latitude": 48.1303302,
-				"longitude": 11.5667481,
-				"pin": "images/coffee_pin.png"
+				"name": "Schelling-Salon",
+				"latitude": 48.1512124,
+				"longitude": 11.573111100000006,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
 			},
 			{
-				"name": "Bar Centrale",
-				"latitude": 48.1322238,
-				"longitude": 11.5745196,
-				"pin": "images/coffee_pin.png"
+				"name": "Cafe Wiener Platz",
+				"latitude": 48.1340884,
+				"longitude": 11.596449200000052,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
 			},
 			{
-				"name": "Caffé Fausto",
-				"latitude": 48.1097829,
-				"longitude": 11.5707436,
-				"pin": "images/coffee_pin.png"
+				"name": "Starbucks",
+				"latitude": 48.13974450000001,
+				"longitude": 11.558762699999988,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
 			},
 			{
-				"name": "Henry hat Hunger",
-				"latitude": 48.1266786,
-				"longitude": 11.5802105,
-				"pin": "images/coffee_pin.png"
+				"name": "Café Rischart",
+				"latitude": 48.1361384,
+				"longitude": 11.576446300000043,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
+			},
+			{
+				"name": "Schuhbecks Orlando",
+				"latitude": 48.1381834,
+				"longitude": 11.580147799999963,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png"
+			},
+			{
+				"name": "Forum Restaurant Cafe Bar",
+				"latitude": 48.1326618,
+				"longitude": 11.57436759999996,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png"
+			},
+			{
+				"name": "Cafe am Beethovenplatz",
+				"latitude": 48.1333237,
+				"longitude": 11.558897099999967,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
+			},
+			{
+				"name": "Lisboa Bar",
+				"latitude": 48.130591,
+				"longitude": 11.605732999999987,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png"
+			},
+			{
+				"name": "Park Café",
+				"latitude": 48.1423183,
+				"longitude": 11.564581599999997,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
+			},
+			{
+				"name": "Cafe Glockenspiel GmbH",
+				"latitude": 48.13695999999999,
+				"longitude": 11.574774100000013,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
+			},
+			{
+				"name": "Luigi Tambosi am Hofgarten",
+				"latitude": 48.14293549999999,
+				"longitude": 11.578238100000021,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
+			},
+			{
+				"name": "Café Lotti",
+				"latitude": 48.1496896,
+				"longitude": 11.559502399999928,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
+			},
+			{
+				"name": "Cafe Zimt",
+				"latitude": 48.1213601,
+				"longitude": 11.5599201,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
+			},
+			{
+				"name": "Sinans Cucina",
+				"latitude": 48.1301042,
+				"longitude": 11.55698069999994,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png"
 			}
 		]
 	},
 	{
 		"city": "Berlin",
-		"latitude": 52.5340616,
-		"longitude": 13.4080685,
+		"latitude": 52.52000659999999,
+		"longitude": 13.404954,
 		"locations": [
 			{
-				"name": "Café Hilde",
-				"latitude": 52.5325279,
-				"longitude": 13.4134222,
-				"pin": "images/coffee_pin.png"
+				"name": "Hackescher Hof",
+				"latitude": 52.5239972,
+				"longitude": 13.402340999999979,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png"
+			},
+			{
+				"name": "Josty",
+				"latitude": 52.5100616,
+				"longitude": 13.37465080000004,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png"
+			},
+			{
+				"name": "Kaffeehaus Einstein",
+				"latitude": 52.5173447,
+				"longitude": 13.385852200000045,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
+			},
+			{
+				"name": "Operncafe",
+				"latitude": 52.5174156,
+				"longitude": 13.396292899999935,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
+			},
+			{
+				"name": "Café Morgenrot",
+				"latitude": 52.53755810000001,
+				"longitude": 13.40887870000006,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
+			},
+			{
+				"name": "Rausch Schokoladenhaus",
+				"latitude": 52.512035,
+				"longitude": 13.391202000000021,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
+			},
+			{
+				"name": "Café Luzia",
+				"latitude": 52.50173909999999,
+				"longitude": 13.41832199999999,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
+			},
+			{
+				"name": "Café Bar - Gorki Park",
+				"latitude": 52.53058799999999,
+				"longitude": 13.401757900000007,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
+			},
+			{
+				"name": "An einem Sonntag im August",
+				"latitude": 52.5399994,
+				"longitude": 13.411462799999981,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
+			},
+			{
+				"name": "Corroboree",
+				"latitude": 52.51027980000001,
+				"longitude": 13.373175199999991,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png"
+			},
+			{
+				"name": "Aufsturz",
+				"latitude": 52.52502,
+				"longitude": 13.391949999999952,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png"
 			},
 			{
 				"name": "Café Anna Blume",
-				"latitude": 52.5363523,
-				"longitude": 13.4138299,
-				"pin": "images/coffee_pin.png"
+				"latitude": 52.5380587,
+				"longitude": 13.419648499999994,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
 			},
 			{
-				"name": "Lass uns Freunde bleiben",
-				"latitude": 52.5338724,
-				"longitude": 13.4077145,
-				"pin": "images/coffee_pin.png"
+				"name": "Voo Store",
+				"latitude": 52.5009373,
+				"longitude": 13.420848500000034,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png"
 			},
 			{
-				"name": "Kulturkantine Mitte-Prenzlauer Berg",
-				"latitude": 52.5325279,
-				"longitude": 13.4107615,
-				"pin": "images/coffee_pin.png"
+				"name": "AMPELMANN Restaurant",
+				"latitude": 52.522178,
+				"longitude": 13.398224600000049,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png"
 			},
 			{
-				"name": "Cafe Knorke Bar",
-				"latitude": 52.532554,
-				"longitude": 13.4206964,
-				"pin": "images/coffee_pin.png"
+				"name": "Café Restaurant Morgenland",
+				"latitude": 52.4989021,
+				"longitude": 13.425539800000024,
+				"pin": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png"
 			}
 		]
 	}
