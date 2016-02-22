@@ -21,7 +21,6 @@ function initApp() {
 
 			// Constructor for a Location.
 			var Location = function(data) {
-				var test;
 				this.name = data.name;
 				this.latitude = data.latitude;
 				this.longitude = data.longitude;
@@ -40,7 +39,6 @@ function initApp() {
 				this.marker.infowindow = new google.maps.InfoWindow({
 					maxWidth: 400
 				});
-				this.marker.infowindow.setContent(document.getElementById('yelpDetail'));
 
 			};
 			Location.prototype.stopAnimation = function() {
@@ -76,6 +74,9 @@ function initApp() {
 				self.yelp_snippet = ko.observable();
 				self.yelp_phone = ko.observable();
 				self.yelp_url = ko.observable();
+				self.yelpdetail = ko.computed(function() {
+					return self.yelp_name();
+				});
 
 				self.window = $(window);
 				self.windowWidth = ko.observable();
@@ -116,9 +117,8 @@ function initApp() {
 
 				// Search for a city.
 				self.onEnter = function(d,e) {
-					var query = self.query();
 					//get Geocode
-					$.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address=' + query, function( data ) {
+					$.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address=' + self.query(), function( data ) {
 						var item = {
 							city: data.results[0].formatted_address,
 							latitude: data.results[0].geometry.location.lat,
@@ -227,6 +227,7 @@ function initApp() {
 
 				// Open Close logic for the Map Marker
 				self.openCloseMarkerDetails = function(location) {
+
 					if(self.windowWidth() < 950) {
 						self.menuOpen(false);
 					}
@@ -238,7 +239,6 @@ function initApp() {
 					setTimeout(function(){
 						location.stopAnimation();
 					}, 2000);
-
 					if(marker.infowindow.getMap()) {
 						marker.infowindow.close(map);
 					} else {
@@ -259,10 +259,11 @@ function initApp() {
 								self.yelp_phone(data.businesses[0].phone);
 								self.yelp_url(data.businesses[0].mobile_url);
 
-
 							} else {
 								self.yelp_snippet('No Detail Informations on yelp.com available.');
 							}
+
+							marker.infowindow.setContent(document.getElementById('yelpDetail').cloneNode(true));
 
 						}).error(function(e) {
 							self.yelp_snippet('Detail Informations are not available!');
@@ -271,6 +272,7 @@ function initApp() {
 						if(self.allInfoWindows.indexOf(marker) === -1) {
 							self.allInfoWindows.push(marker);
 						}
+
 					}
 
 					map.setCenter(marker.getPosition());
