@@ -74,9 +74,6 @@ function initApp() {
 				self.yelp_snippet = ko.observable();
 				self.yelp_phone = ko.observable();
 				self.yelp_url = ko.observable();
-				self.yelpdetail = ko.computed(function() {
-					return self.yelp_name();
-				});
 
 				self.window = $(window);
 				self.windowWidth = ko.observable();
@@ -239,41 +236,38 @@ function initApp() {
 					setTimeout(function(){
 						location.stopAnimation();
 					}, 2000);
-					if(marker.infowindow.getMap()) {
-						marker.infowindow.close(map);
-					} else {
-						self.allInfoWindows.forEach(function(item) {
-							item.infowindow.close();
-						});
-						marker.infowindow.open(map, marker);
-						var query = '/api/'+ self.currentCity().city() + '/' + marker.name;
 
-						$.getJSON( query , function( data ) {
-							if(data.businesses[0]) {
+					self.allInfoWindows.forEach(function(item) {
+						item.infowindow.close();
+					});
+					marker.infowindow.open(map, marker);
+					var query = '/api/'+ self.currentCity().city() + '/' + marker.name;
 
-								self.yelp_name(data.businesses[0].name);
-								self.yelp_img(data.businesses[0].image_url);
-								self.yelp_rating(data.businesses[0].rating_img_url);
-								self.yelp_review_count(data.businesses[0].review_count + ' recommended posts');
-								self.yelp_snippet(data.businesses[0].snippet_text);
-								self.yelp_phone(data.businesses[0].phone);
-								self.yelp_url(data.businesses[0].mobile_url);
+					$.getJSON( query , function( data ) {
+						if(data.businesses[0]) {
 
-							} else {
-								self.yelp_snippet('No Detail Informations on yelp.com available.');
-							}
+							self.yelp_name(data.businesses[0].name);
+							self.yelp_img(data.businesses[0].image_url);
+							self.yelp_rating(data.businesses[0].rating_img_url);
+							self.yelp_review_count(data.businesses[0].review_count + ' recommended posts');
+							self.yelp_snippet(data.businesses[0].snippet_text);
+							self.yelp_phone(data.businesses[0].phone);
+							self.yelp_url(data.businesses[0].mobile_url);
 
-							marker.infowindow.setContent(document.getElementById('yelpDetail').cloneNode(true));
-
-						}).error(function(e) {
-							self.yelp_snippet('Detail Informations are not available!');
-						});
-						// If not in Array add it.
-						if(self.allInfoWindows.indexOf(marker) === -1) {
-							self.allInfoWindows.push(marker);
+						} else {
+							self.yelp_snippet('No Detail Informations on yelp.com available.');
 						}
 
+						marker.infowindow.setContent(document.getElementById('yelpDetail').cloneNode(true));
+
+					}).error(function(e) {
+						self.yelp_snippet('Detail Informations are not available!');
+					});
+					// If not in Array add it.
+					if(self.allInfoWindows.indexOf(marker) === -1) {
+						self.allInfoWindows.push(marker);
 					}
+
 
 					map.setCenter(marker.getPosition());
 
