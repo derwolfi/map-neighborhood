@@ -1,4 +1,4 @@
-function initApp() {
+function initMap() {
 	'use strict';
 
 	jQuery( document ).ready(function( $ ) {
@@ -131,15 +131,15 @@ function initApp() {
 						    types: ['cafe']
 							}, function(result, status) {
 								if (status === google.maps.places.PlacesServiceStatus.OK) {
-								    for (var i = 0; i < result.length; i++) {
-								    	var loc = {
-								    		name: result[i].name,
-								    		latitude: result[i].geometry.location.lat(),
-									    	longitude: result[i].geometry.location.lng(),
-									    	pin: result[i].icon
+									result.forEach(function(elem) {
+										var loc = {
+								    		name: elem.name,
+								    		latitude: elem.geometry.location.lat(),
+									    	longitude: elem.geometry.location.lng(),
+									    	pin: elem.icon
 								    	};
 								    	item.locations.push( new Location(loc) );
-								    }
+									});
 								}
 								self.setCurrentCity( new City(item) );
 							}
@@ -147,8 +147,8 @@ function initApp() {
 
 
 
-					}).error(function(e) {
-						detail.text('No Informations are not available!');
+					}).fail(function() {
+						alert('No Informations are available!');
 					});
 
 				};
@@ -260,7 +260,7 @@ function initApp() {
 
 						marker.infowindow.setContent(document.getElementById('yelpDetail').cloneNode(true));
 
-					}).error(function(e) {
+					}).fail(function() {
 						self.yelp_snippet('Detail Informations are not available!');
 					});
 					// If not in Array add it.
@@ -275,7 +275,7 @@ function initApp() {
 
 				// Menu open/close
 				self.menuOpen = ko.observable(true);
-				self.handle = function(data,event) {
+				self.handle = function() {
 					self.menuOpen(!self.menuOpen());
 				};
 
@@ -309,13 +309,7 @@ function initApp() {
 
 }
 
-// async callback for the google Map.
-function initMap() {
-	// Init the App
-	initApp();
-}
-
 function googleMapError() {
   	// and this will be called when there was an error
-  	console.log('error');
+  	alert('Something with Google Maps went wrong!');
 }
